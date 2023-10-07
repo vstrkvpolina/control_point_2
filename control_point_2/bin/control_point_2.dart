@@ -1,8 +1,6 @@
-import 'dart:convert';
 import 'package:dio/dio.dart';
 
 import 'car_model.dart';
-import 'model/car_model.dart';
 
 void main (List<String> arguments) async {
   var httpClient = Dio();
@@ -16,11 +14,10 @@ void main (List<String> arguments) async {
   
   double count = 0;
   double all_price = 0;
-  for (var elements in cars) {
-    //var compare = double.parse(el.price.replaceAll("\$",""));
-    if (elements.CarColor == "Yellow") {
-      var mid = double.parse(elements.Price.replaceAll("\$",""));
-      all_price += elements.Price;
+  for (var el in cars) {
+    if (el.CarColor == "Yellow") {
+      var price = double.parse(el.Price.replaceAll("\$",""));
+      all_price += price;
       count ++;
     }
   }
